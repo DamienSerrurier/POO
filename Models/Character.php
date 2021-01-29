@@ -18,7 +18,7 @@ class Character
         return $this->health;
     }
 
-    public function setrage($rageValue)
+    public function setRage($rageValue)
     {
         $this->rage = $rageValue;
         return $this->rage;
@@ -29,9 +29,9 @@ class Character
         return $this->rage;
     }
 
-    public function __construct()
+    public function __construct($pv, $fury)
     {
-        $this->setHealth(300);
-        $this->setRage(0);
+        $this->setHealth($pv);
+        $this->setRage($fury);
     }
 }

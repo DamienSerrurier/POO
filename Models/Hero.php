@@ -64,27 +64,24 @@ class Hero extends Character
         return $this->attacked;
     }
 
-    public function __construct()
+    public function __construct($pv, $fury, $weaponType, $weaponDamageType, $shieldType, $shieldValueType)
     {
-        $character = new Character();
-        parent::__construct();
-        $this->setWeapon('Excalibur');
-        $this->setweaponDamage(20);
-        $this->setshield('Bouclier hylien');
-        $this->setshieldValue(10);
-        echo 'Le héro à ' . $character->getHealth() . ' points de vie et ' . $character->getRage() . ' points de rage. Il est équipé égualement d\'une épée ' . $this->weapon . ' qui fait ' . $this->weaponDamage . ' de domage et d\'un ' . $this->shield . ' qui a une classe d\'armure de ' . $this->shieldValue . '.';
+        parent::__construct($pv, $fury);
+        $this->setWeapon($weaponType);
+        $this->setweaponDamage($weaponDamageType);
+        $this->setshield($shieldType);
+        $this->setshieldValue($shieldValueType);
     }
 
-    public function attacked()
+    public function attacked($orcDamage)
     {
-        $calDammage = 20 - $this->getshieldValue();
-        parent::setHealth(parent::getHealth() - $calDammage);
+        $calcDammage = $orcDamage - $this->getshieldValue();
+        parent::setHealth(parent::getHealth() - $calcDammage);
+        $this->addRageValue();
     }
 
     public function addRageValue()
     {
-        for ($rage = 0; $rage < 30; $rage++) {
-            $rage = parent::setrage(parent::getRage() + 10);
-        }
+        parent::setRage(parent::getRage() + 30);
     }
 }
